@@ -73,24 +73,10 @@ def clean_markdown(text):
     return text.strip()
 
 
+
 def build_prompt(perfume_name, brand, category, occasion, season, budget, currency):
+
     name = perfume_name.strip() or "Not provided"
     brand_name = brand.strip() or "Not provided"
-    budget_text = f"{budget:,.0f} {currency}" if budget and budget > 0 else "Not specified"
 
-    return f"""
-You are a careful perfume educator and fragrance recommendation assistant.
-Analyze the perfume using your reliable existing knowledge and the user's input.
-Do not claim to have checked a live database, retailer, official brand page, or current price.
-
-USER INPUT
-- Perfume name: {name}
-- Brand: {brand_name}
-- Preferred fragrance family: {category}
-- Occasion: {occasion}
-- Preferred season: {season}
-- Budget: {budget_text}
-
-IMPORTANT ACCURACY RULES
-1. Never invent perfume identity, scent notes, concentration, longevity, projection, sillage, release year, or price.
-2. If you cannot confidently identify the perfume, say "Unable to identify confidently" and ask for clearer label details. Do not guess from a vague bottle image.
+    budget_text = str(budget) + " " + currency if budget >
